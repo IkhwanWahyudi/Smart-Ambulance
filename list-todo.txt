@@ -1,0 +1,8 @@
+Smart Ambulance
+- simpan data ke database
+- melihat lokasi driver/Ambulance
+- regis akun
+- login
+- pilih Ambulance
+- pilih tujuan
+- rute dari Ambulance ke rs tujuan
