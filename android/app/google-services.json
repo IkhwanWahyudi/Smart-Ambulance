@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "504291469947",
+    "project_id": "pkm-smart-ambulance",
+    "storage_bucket": "pkm-smart-ambulance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504291469947:android:87715421eb1dd322a110de",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcfBvoZ-Cmw-KY4WfmbhM2MO4UEyRJja8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
