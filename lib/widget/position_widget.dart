@@ -1,5 +1,6 @@
-import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class PositionWidget extends StatefulWidget {
@@ -12,6 +13,32 @@ class PositionWidget extends StatefulWidget {
 class _PositionWidgetState extends State<PositionWidget> {
   Position? position;
   Set<Marker> markers = {};
+  List<Polyline> polylines = [];
+
+  void addPolyline() {
+    // line didapat dari response ketika call api nya, nanti didalam response nya ada properti encodecPolyline
+    String line = "`daBolziU}A`BuAtAkAnAsAxA{AxAmAdA`@h@z@r@zAxApBpB~@z@dBpA`AeApAqAbAgAr@j@FI";
+    List<PointLatLng> decodedPath = PolylinePoints().decodePolyline(line);
+    List<LatLng> convertedPath = [];
+    for (var point in decodedPath) {
+      convertedPath.add(LatLng(point.latitude, point.longitude));
+    }
+    Polyline polyline = Polyline(
+      polylineId: PolylineId('polyline'),
+      points: convertedPath,
+      color: Colors.blue,
+      width: 10,
+    );
+    setState(() {
+      polylines.add(polyline);
+    });
+  }
+
+  void removeAllPolylines() {
+    setState(() {
+      polylines.clear();
+    });
+  }
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -44,6 +71,7 @@ class _PositionWidgetState extends State<PositionWidget> {
     _determinePosition().then((value) {
       setState(() {
         position = value;
+        addPolyline();
       });
     });
   }
@@ -53,11 +81,8 @@ class _PositionWidgetState extends State<PositionWidget> {
     // ignore: unnecessary_null_comparison
     if (position == null) {
       return const Center(
-        child: SizedBox(
-          width: 100,
-          height: 100,
-          child: CircularProgressIndicator())
-        );
+          child: SizedBox(
+              width: 100, height: 100, child: CircularProgressIndicator()));
     }
 
     markers.add(
@@ -73,9 +98,11 @@ class _PositionWidgetState extends State<PositionWidget> {
     return GoogleMap(
       initialCameraPosition: CameraPosition(
         target: LatLng(position!.latitude, position!.longitude),
-        zoom: 16.0,
+        zoom: 17.0,
       ),
       markers: markers,
+      mapType: MapType.satellite,
+      polylines: Set<Polyline>.of(polylines),
     );
   }
 }

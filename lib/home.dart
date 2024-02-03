@@ -6,10 +6,10 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 500,
-      width: 300,
-      child: PositionWidget(),
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: const PositionWidget(),
     );
   }
 }
