@@ -16,8 +16,8 @@ class _PositionWidgetState extends State<PositionWidget> {
   List<Polyline> polylines = [];
 
   void addPolyline() {
-    // List<LatLng> decodedPath = polylinePoints.decodePolyline("dooBwouiUgDfB");
-    String line = "~roBsluiU{BcB}@d@m@h@{BoDy@d@q@b@w@h@y@d@";
+    // line didapat dari response ketika call api nya, nanti didalam response nya ada properti encodecPolyline
+    String line = "`daBolziU}A`BuAtAkAnAsAxA{AxAmAdA`@h@z@r@zAxApBpB~@z@dBpA`AeApAqAbAgAr@j@FI";
     List<PointLatLng> decodedPath = PolylinePoints().decodePolyline(line);
     List<LatLng> convertedPath = [];
     for (var point in decodedPath) {
